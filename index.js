@@ -1,5 +1,5 @@
-
 let allJobsData = [];
+let selectedFilters = [];
 
 async function importData() {
     try {
@@ -53,7 +53,7 @@ function generateJobListing(job) {
         const button = document.createElement('button');
         button.classList.add('button');
         button.innerHTML = item;
-        button.addEventListener('click', () => filterJobs(item));
+        button.addEventListener('click', () => addFilter(item));
         infoRightInner.appendChild(button);
     });
 
@@ -68,12 +68,28 @@ function generateJobListing(job) {
     return jobListing;
 }
 
-function filterJobs(category) {
-    const search= document.querySelector('.search')
-    search.innerHTML +=`<p>${category}</p>`
+function addFilter(category) {
+    if (!selectedFilters.includes(category)) {
+        selectedFilters.push(category);
+        updateSearchInput();
+        filterJobs();
+    }
+}
+
+function updateSearchInput() {
+    const search = document.querySelector('.search');
+    search.innerHTML = ''; // Clear previous filters
+    selectedFilters.forEach(filter => {
+        const filterElement = document.createElement('p');
+        filterElement.innerText = filter;
+        search.appendChild(filterElement);
+    });
+}
+
+function filterJobs() {
     const filteredJobs = allJobsData.filter(job => {
         const rolesAndSkills = [job.role, job.level, ...job.languages, ...job.tools];
-        return rolesAndSkills.includes(category);
+        return selectedFilters.every(filter => rolesAndSkills.includes(filter));
     });
 
     const jobListingElement = document.getElementById('jobListing');
@@ -94,4 +110,5 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 });
+
 
