@@ -4,6 +4,8 @@
  box-sizing: border-box;
 }
 body{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* height: 100vh; */
 }
 nav{
@@ -25,15 +27,16 @@ nav .search{
 main{
     width: 80%;
     margin: 0 auto;
-    border: 5px solid;
     display: flex;
     flex-direction: column;
 }
 main section{
     margin-bottom: 12px;
-    border: 3px solid green;
     display: flex;
     align-items: center;
+    background-color: antiquewhite;
+    box-shadow: 3px 3px 10px black;
+    padding: 20px;
 }
 main section .image{
     width: 100px;
@@ -43,7 +46,7 @@ main section .image{
 
 main section .info{
     display: flex;
-    /* width: 60%; */
+    width: 50%;
 }
 main section .info .infoLeftTop{
     display: flex;
@@ -78,5 +81,18 @@ main section .info .infoLeftBottom{
 }
 main section .info .infoLeftBottom p{
     margin: 0px 10px;
-    color: ;
+    color: hsl(180, 14%, 20%)   ;
+}
+main section .infoRightInner{
+    display: flex;
+    /* justify-self: end; */
+}
+main section .infoRightInner button{
+    margin: 10px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: hsl(180, 21%, 88%) ;
+    color:  hsl(180, 59%, 36%);
+    border: none;
+    cursor: pointer;
 }
