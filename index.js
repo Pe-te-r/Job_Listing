@@ -78,7 +78,17 @@ function addFilter(category) {
 
 function updateSearchInput() {
     const search = document.querySelector('.search');
-    search.innerHTML = ''; // Clear previous filters
+    const clear= document.createElement('button');
+    clear.innerText = 'Clear'
+    search.innerHTML = ''; 
+    search.style.display='flex'
+    clear.addEventListener('click', () => {
+        selectedFilters = [];
+        updateSearchInput();
+        filterJobs();
+        search.style.display='none'
+    });
+    search.appendChild(clear);
     selectedFilters.forEach(filter => {
         const filterElement = document.createElement('p');
         filterElement.innerText = filter;

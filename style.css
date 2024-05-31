@@ -26,9 +26,19 @@ nav .search{
     border: 1px solid black;
     display: flex;
     align-items: center;
+    display: none;
 }
 nav .search p{
     margin: 0px 10px;
+}
+nav .search button{
+    position: absolute;
+    right: 0;
+    padding: 5px 8px;
+    border-radius:10px ;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 main{
     width: 80%;
@@ -99,8 +109,7 @@ main section .infoRightInner{
 }
 main section .infoRightInner button{
     margin: 10px;
-    padding: 0px;
-    /* padding: 10px 10px; */
+    padding: 10px 10px;
     border-radius: 10px;
     background-color: hsl(180, 21%, 88%) ;
     color:  hsl(180, 59%, 36%);
