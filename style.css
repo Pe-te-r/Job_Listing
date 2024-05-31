@@ -48,7 +48,8 @@ main section .image{
 
 main section .info{
     display: flex;
-    width: 50%;
+    /* width: 60%; */
+    /* border: 3px solid black; */
 }
 main section .info .infoLeftTop{
     display: flex;
@@ -87,11 +88,13 @@ main section .info .infoLeftBottom p{
 }
 main section .infoRightInner{
     display: flex;
+    margin-left: 20px;
     /* justify-self: end; */
 }
 main section .infoRightInner button{
     margin: 10px;
-    padding: 10px 10px;
+    padding: 0px;
+    /* padding: 10px 10px; */
     border-radius: 10px;
     background-color: hsl(180, 21%, 88%) ;
     color:  hsl(180, 59%, 36%);

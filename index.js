@@ -1,3 +1,6 @@
+
+let allJobsData = [];
+
 async function importData() {
     try {
         const response = await fetch('data.json');
@@ -50,6 +53,7 @@ function generateJobListing(job) {
         const button = document.createElement('button');
         button.classList.add('button');
         button.innerHTML = item;
+        button.addEventListener('click', () => filterJobs(item));
         infoRightInner.appendChild(button);
     });
 
@@ -57,19 +61,37 @@ function generateJobListing(job) {
     infoLeft.appendChild(infoLeftMiddle);
     infoLeft.appendChild(infoLeftBottom);
     info.appendChild(infoLeft);
-    info.appendChild(infoRightInner);
     jobListing.appendChild(image);
     jobListing.appendChild(info);
+    jobListing.appendChild(infoRightInner);
 
     return jobListing;
 }
 
+function filterJobs(category) {
+    const search= document.querySelector('.search')
+    search.innerHTML +=`<p>${category}</p>`
+    const filteredJobs = allJobsData.filter(job => {
+        const rolesAndSkills = [job.role, job.level, ...job.languages, ...job.tools];
+        return rolesAndSkills.includes(category);
+    });
+
+    const jobListingElement = document.getElementById('jobListing');
+    jobListingElement.innerHTML = '';
+
+    filteredJobs.forEach(job => {
+        const jobListing = generateJobListing(job);
+        jobListingElement.appendChild(jobListing);
+    });
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
-    const jobsData = await importData();
-    if (jobsData && jobsData.length) {
-        jobsData.forEach((job) => {
+    allJobsData = await importData();
+    if (allJobsData && allJobsData.length) {
+        allJobsData.forEach((job) => {
             const jobListing = generateJobListing(job);
             document.querySelector('#jobListing').appendChild(jobListing);
         });
     }
 });
+
