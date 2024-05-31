@@ -37,6 +37,8 @@ main section{
     background-color: antiquewhite;
     box-shadow: 3px 3px 10px black;
     padding: 20px;
+    border-radius: 10px;
+    border-left: 3px solid hsl(180, 29%, 50%);
 }
 main section .image{
     width: 100px;
