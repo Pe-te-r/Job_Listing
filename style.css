@@ -116,3 +116,26 @@ main section .infoRightInner button{
     border: none;
     cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+    nav{
+        background-image: url("./images/bg-header-mobile.svg");
+    }
+    main{
+        width: 90%;
+    }
+}
+
+@media (max-width:900px) {
+    main{
+        width: 100%;
+    }
+    main section{
+        display: flex;
+        flex-direction: column;
+    }
+    main section .infoRightInner{
+        margin-top: 10px;
+        border-top:.5px solid black ;
+    }
+}
